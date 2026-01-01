@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-g" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bio-Med Record Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .animate-fade-in-up {
+          animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-fade-in {
+          animation: fade-in 0.5s ease-out forwards;
+        }
+        .animate-modal-open {
+          animation: modal-open 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .animate-modal-close {
+          animation: modal-close 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+        }
+        .animate-backdrop-fade-in {
+          animation: backdrop-fade-in 0.4s ease-out forwards;
+        }
+        .animate-backdrop-fade-out {
+          animation: backdrop-fade-out 0.3s ease-in forwards;
+        }
+        .animate-face-scan-pulse {
+          animation: face-scan-pulse 2.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+        .will-change-transform {
+          will-change: transform;
+        }
+        .grid-background {
+            background-image:
+                linear-gradient(to right, rgb(22 30 49 / 0.5) 1px, transparent 1px),
+                linear-gradient(to bottom, rgb(22 30 49 / 0.5) 1px, transparent 1px);
+            background-size: 3rem 3rem;
+            transform: perspective(600px) rotateX(60deg);
+        }
+         .particle {
+            animation: stream 15s linear infinite;
+        }
+        .animate-scan-line {
+          animation: scan-line-anim 3s ease-in-out infinite alternate;
+        }
+        .animate-bg-pulse {
+          animation: bg-pulse-anim 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+      }
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes modal-open {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      @keyframes modal-close {
+        from {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(30px) scale(0.95);
+        }
+      }
+      @keyframes backdrop-fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes backdrop-fade-out {
+        from { opacity: 1; }
+        to { opacity: 0; }
+      }
+      @keyframes face-scan-pulse {
+        0%, 100% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1.03);
+          opacity: 1;
+        }
+      }
+      @keyframes stream {
+        from {
+            transform: translateY(0);
+            opacity: 0;
+        }
+        25%, 75% {
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-100vh);
+            opacity: 0;
+        }
+      }
+      @keyframes scan-line-anim {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(calc(100% - 4px)); /* 4px is h-1 */
+        }
+      }
+      @keyframes bg-pulse-anim {
+        0%, 100% {
+          transform: scale(0.98);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.02);
+          opacity: 0.8;
+        }
+      }
+    </style>
+     <style>
+      /* Better date input styling for dark mode in Webkit browsers */
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1) brightness(0.8) saturate(0.5);
+        cursor: pointer;
+        transition: filter 0.2s;
+      }
+      input[type="date"]::-webkit-calendar-picker-indicator:hover {
+        filter: invert(1) brightness(1);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "@google/genai": "https://esm.run/@google/genai"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

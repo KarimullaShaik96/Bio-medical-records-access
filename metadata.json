@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Copy of Bio-Med Record Access",
+  "description": "A secure medical history portal for patients, accessible via simulated biometric authentication. Allows authorized doctors to add new records seamlessly.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
